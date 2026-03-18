@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* The Forbidden Wiki - Dark editorial theme */
+  --background: oklch(0.12 0.005 260);
+  --foreground: oklch(0.92 0.005 260);
+  --card: oklch(0.16 0.006 260);
+  --card-foreground: oklch(0.92 0.005 260);
+  --popover: oklch(0.16 0.006 260);
+  --popover-foreground: oklch(0.92 0.005 260);
+  --primary: oklch(0.62 0.22 25); /* crimson red */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.22 0.006 260);
+  --secondary-foreground: oklch(0.85 0.005 260);
+  --muted: oklch(0.20 0.006 260);
+  --muted-foreground: oklch(0.58 0.006 260);
+  --accent: oklch(0.74 0.15 60); /* warm amber */
+  --accent-foreground: oklch(0.12 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.26 0.006 260);
+  --input: oklch(0.22 0.006 260);
+  --ring: oklch(0.62 0.22 25);
+  --radius: 0.375rem;
+
+  --sidebar: oklch(0.14 0.006 260);
+  --sidebar-foreground: oklch(0.88 0.005 260);
+  --sidebar-primary: oklch(0.62 0.22 25);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.20 0.006 260);
+  --sidebar-accent-foreground: oklch(0.88 0.005 260);
+  --sidebar-border: oklch(0.24 0.006 260);
+  --sidebar-ring: oklch(0.62 0.22 25);
+
+  --wiki-link: oklch(0.65 0.15 230);
+  --wiki-link-visited: oklch(0.55 0.10 300);
+  --wiki-infobox: oklch(0.18 0.008 260);
+  --wiki-infobox-header: oklch(0.62 0.22 25);
+  --wiki-toc-bg: oklch(0.18 0.006 260);
+  --wiki-quote: oklch(0.22 0.008 260);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-serif: 'Lora', 'Georgia', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-wiki-link: var(--wiki-link);
+  --color-wiki-link-visited: var(--wiki-link-visited);
+  --color-wiki-infobox: var(--wiki-infobox);
+  --color-wiki-infobox-header: var(--wiki-infobox-header);
+  --color-wiki-toc-bg: var(--wiki-toc-bg);
+  --color-wiki-quote: var(--wiki-quote);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+/* Wiki-specific styles */
+.wiki-content {
+  @apply font-sans leading-relaxed text-foreground;
+}
+.wiki-content h1 { @apply text-3xl font-serif font-bold mt-6 mb-3 pb-2 border-b border-border; }
+.wiki-content h2 { @apply text-2xl font-serif font-semibold mt-6 mb-3 pb-1 border-b border-border; }
+.wiki-content h3 { @apply text-xl font-serif font-semibold mt-4 mb-2; }
+.wiki-content h4 { @apply text-lg font-semibold mt-3 mb-1; }
+.wiki-content p { @apply mb-4 leading-relaxed; }
+.wiki-content a { @apply text-[var(--wiki-link)] hover:underline; }
+.wiki-content ul { @apply list-disc pl-6 mb-4 space-y-1; }
+.wiki-content ol { @apply list-decimal pl-6 mb-4 space-y-1; }
+.wiki-content blockquote { @apply bg-[var(--wiki-quote)] border-l-4 border-primary pl-4 py-2 my-4 italic text-muted-foreground; }
+.wiki-content code { @apply font-mono bg-muted px-1 py-0.5 rounded text-sm; }
+.wiki-content pre { @apply font-mono bg-muted p-4 rounded-md overflow-x-auto mb-4 text-sm; }
+.wiki-content table { @apply w-full border-collapse mb-4; }
+.wiki-content th { @apply bg-secondary text-secondary-foreground px-3 py-2 text-left font-semibold border border-border; }
+.wiki-content td { @apply px-3 py-2 border border-border; }
+.wiki-content hr { @apply border-border my-6; }
